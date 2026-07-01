@@ -1,33 +1,36 @@
 print("Rana Bilal")
 
 
+cash = 5000
 
-balance = 5000
+while True:
+    print("\n===== ATM MENU =====")
+    print("1. Check Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Cash")
+    print("4. Exit")
 
-print(" ATM Machine")
+    choice = input("OPTION SELECT KAREIN: ")
 
-print("1. Balance Check")
-print("2. Deposit")
-print("3. Withdraw")
+    if choice == "1":
+        print("Your balance is:", cash)
 
-choice = input("Option select karein: ")
+    elif choice == "2":
+        amount = int(input("Deposit amount: "))
+        cash += amount
+        print("Money deposited. New balance:", cash)
 
-if choice == "1":
-    print(" Balance:", balance)
+    elif choice == "3":
+        amount = int(input("Withdraw amount: "))
+        if amount <= cash:
+            cash -= amount
+            print("Please collect cash. Remaining balance:", cash)
+        else:
+            print("Insufficient balance!")
 
-elif choice == "2":
-    amount = int(input("Deposit amount: "))
-    balance = balance + amount
-    print(" New Balance:", balance)
+    elif choice == "4":
+        print("Thank you! Exit ho raha hai...")
+        break
 
-elif choice == "3":
-    amount = int(input("Withdraw amount: "))
-
-    if amount <= balance:
-        balance = balance - amount
-        print(" Remaining Balance:", balance)
     else:
-        print(" Balance kam hai")
-
-else:
-    print(" Invalid option")
+        print("Invalid option! Try again.")
