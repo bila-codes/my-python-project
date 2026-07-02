@@ -15,13 +15,13 @@ class Order:
     def total_bill(self):
         total = 0
         for product, qty in self.items:
-            total = total + (product.price * qty)
+            total += product.price * qty
         return total
 
     def show_bill(self):
         print("\nYOUR BILL")
         for p, q in self.items:
-            print(f"{p.name} x {q} = {p.price * q}")
+            print(p.name, "x", q, "=", p.price * q)
         print("TOTAL:", self.total_bill())
         print()
 
@@ -40,31 +40,32 @@ class OrderSystem:
     def show_products(self):
         print("\n--- PRODUCTS ---")
         for p in self.products.values():
-            print(f"{p.pid}. {p.name} - {p.price}")
-        print("----------------\n")
+            print(p.pid, p.name, "-", p.price)
+        print()
 
     def add_to_cart(self):
         self.show_products()
 
         while True:
             pid = input("Enter product id (done to finish): ")
+
             if pid == "done":
                 break
 
             if pid in self.products:
                 qty = int(input("Quantity: "))
                 self.cart.add_items(self.products[pid], qty)
-                print("Added to cart!\n")
+                print("Added")
             else:
-                print("Invalid product id!")
+                print("Invalid id")
 
     def checkout(self):
         if not self.cart.items:
-            print("Cart is empty!\n")
+            print("Cart empty")
             return
 
         self.cart.show_bill()
-        print("Order Placed Successfully! 🎉\n")
+        print("Order placed")
         self.cart = Order()
 
 
@@ -73,11 +74,10 @@ def main():
     system.add_sample_products()
 
     while True:
-        print("\nORDER SYSTEM")
-        print("1. Show Products")
-        print("2. Add to Cart")
-        print("3. Checkout / Place Order")
-        print("4. Exit")
+        print("\n1 Show Products")
+        print("2 Add to Cart")
+        print("3 Checkout")
+        print("4 Exit")
 
         choice = input("Enter choice: ")
 
@@ -90,8 +90,12 @@ def main():
         elif choice == "4":
             break
         else:
-            print("Invalid choice!")
+            print("Invalid choice")
 
 
 if __name__ == "__main__":
     main()
+
+
+
+print("Bilal")    
